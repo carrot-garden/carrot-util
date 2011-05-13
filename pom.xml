@@ -13,8 +13,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>carrot-utils-jackson</module>
+		<module>carrot-utils-json</module>
 	</modules>
-
 
 </project>
