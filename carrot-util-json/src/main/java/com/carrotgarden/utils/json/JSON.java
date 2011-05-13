@@ -1,6 +1,7 @@
 package com.carrotgarden.utils.json;
 
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Map;
 
 import org.codehaus.jackson.map.DeserializationConfig;
@@ -98,10 +99,9 @@ public class JSON {
 		}
 	}
 
-	public static <T> T fromURL(String textURL, Class<T> klaz) {
+	public static <T> T fromURL(URL url, Class<T> klaz) {
 		try {
-			String text = null; // new ExtraURL(textURL).readAsText();
-			T value = mapper.readValue(text, klaz);
+			T value = mapper.readValue(url, klaz);
 			return value;
 		} catch (Exception e) {
 			log.error("", e);
