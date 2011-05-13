@@ -9,11 +9,12 @@
 		<version>1.0.20-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>carrot-utils</artifactId>
+	<artifactId>carrot-util</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<modules>
-		<module>carrot-utils-json</module>
+		<module>carrot-util-json</module>
 	</modules>
 
 </project>
