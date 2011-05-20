@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Map;
 
+import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.Module;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -29,37 +30,42 @@ public class JSON {
 
 		/* READ: */
 
+		// it is fine to use "{ a : 'b' }"
+		mapper.configure(//
+				JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+		mapper.configure(//
+				JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+
 		// must annotate fields with @JsonProperty explicitly
-		mapper.getDeserializationConfig().disable(
-				DeserializationConfig.Feature.AUTO_DETECT_FIELDS);
-		// must annotate fields with @JsonProperty explicitly
-		mapper.getDeserializationConfig().disable(
-				DeserializationConfig.Feature.AUTO_DETECT_SETTERS);
-		// must annotate fields with @JsonCerator explicitly
-		mapper.getDeserializationConfig().disable(
-				DeserializationConfig.Feature.AUTO_DETECT_CREATORS);
+		mapper.configure(//
+				DeserializationConfig.Feature.AUTO_DETECT_FIELDS, false);
+		mapper.configure(//
+				DeserializationConfig.Feature.AUTO_DETECT_SETTERS, false);
+		mapper.configure(//
+				DeserializationConfig.Feature.AUTO_DETECT_CREATORS, false);
+
 		// make all unknown into optional
-		mapper.getDeserializationConfig().disable(
-				DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES);
+		mapper.configure(
+				DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		//
 
 		/* WRITE: */
 
 		// will introduce tabs
-		mapper.getSerializationConfig().enable(
-				SerializationConfig.Feature.INDENT_OUTPUT);
+		mapper.configure(//
+				SerializationConfig.Feature.INDENT_OUTPUT, true);
 
 		// must annotate with @JsonProperty explicitly
-		mapper.getSerializationConfig().disable(
-				SerializationConfig.Feature.AUTO_DETECT_FIELDS);
-		// must annotate with @JsonProperty explicitly
-		mapper.getSerializationConfig().disable(
-				SerializationConfig.Feature.AUTO_DETECT_GETTERS);
-		// must annotate with @JsonProperty explicitly
-		mapper.getSerializationConfig().disable(
-				SerializationConfig.Feature.AUTO_DETECT_IS_GETTERS);
+		mapper.configure(//
+				SerializationConfig.Feature.AUTO_DETECT_FIELDS, false);
+		mapper.configure(//
+				SerializationConfig.Feature.AUTO_DETECT_GETTERS, false);
+		mapper.configure(//
+				SerializationConfig.Feature.AUTO_DETECT_IS_GETTERS, false);
+
 		// no more empty fields
-		mapper.getSerializationConfig().disable(
-				SerializationConfig.Feature.WRITE_NULL_PROPERTIES);
+		mapper.configure(//
+				SerializationConfig.Feature.WRITE_NULL_PROPERTIES, false);
 
 	}
 
