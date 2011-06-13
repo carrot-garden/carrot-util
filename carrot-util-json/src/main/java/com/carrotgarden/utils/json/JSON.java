@@ -25,6 +25,10 @@ public class JSON {
 
 	}
 
+	public static ObjectMapper getInstance() {
+		return mapper;
+	}
+
 	@SuppressWarnings("deprecation")
 	public static void applyMapperPolicy(final ObjectMapper mapper) {
 
