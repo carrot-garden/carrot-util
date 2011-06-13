@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Map;
 
+import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.Module;
@@ -70,6 +71,10 @@ public class JSON {
 		// no more empty fields
 		mapper.configure(//
 				SerializationConfig.Feature.WRITE_NULL_PROPERTIES, false);
+
+		// will NOT close output NOT owned by the generator.
+		mapper.configure(//
+				JsonGenerator.Feature.AUTO_CLOSE_TARGET, false);
 
 	}
 
