@@ -1,4 +1,4 @@
-package com.carrotgarden.utils.json;
+package com.carrotgarden.util.json;
 
 import java.io.InputStream;
 import java.net.URL;
