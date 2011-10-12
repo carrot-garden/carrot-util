@@ -12,7 +12,7 @@
 	<artifactId>carrot-util-json</artifactId>
 
 	<properties>
-		<jacksonVersion>1.8.5</jacksonVersion>
+		<jacksonVersion>1.9.0</jacksonVersion>
 	</properties>
 
 	<dependencies>
@@ -21,18 +21,19 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
 			<version>${jacksonVersion}</version>
+			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>${jacksonVersion}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
