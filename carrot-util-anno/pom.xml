@@ -4,17 +4,22 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.carrotgarden</groupId>
+		<groupId>com.carrotgarden.base</groupId>
 		<artifactId>carrot-archon</artifactId>
-		<version>1.0.20-SNAPSHOT</version>
+		<version>1.1.5</version>
 	</parent>
 
-	<artifactId>carrot-util</artifactId>
+	<groupId>com.carrotgarden.util</groupId>
+	<artifactId>carrot-util-anno</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>bundle</packaging>
 
-	<modules>
-		<module>carrot-util-json</module>
-	</modules>
+	<properties>
+		<carrotJavaVersion>1.6</carrotJavaVersion>
+	</properties>
+
+	<dependencies>
+
+	</dependencies>
 
 </project>
