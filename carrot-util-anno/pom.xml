@@ -10,7 +10,7 @@
 
 	<groupId>com.carrotgarden.util</groupId>
 	<artifactId>carrot-util-anno</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>bundle</packaging>
 
 	<scm>
