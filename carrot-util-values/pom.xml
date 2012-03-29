@@ -25,6 +25,7 @@
 
 	<dependencies>
 
+		<!-- log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -35,44 +36,47 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- time -->
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>
 
+		<!-- util -->
 		<dependency>
 			<groupId>com.carrotgarden.util</groupId>
 			<artifactId>carrot-util-anno</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.carrotgarden.util</groupId>
 			<artifactId>carrot-util-ascii</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.carrotgarden.util</groupId>
 			<artifactId>carrot-util-test</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.0.1</version>
 		</dependency>
 
+		<!-- json codec -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.0.0</version>
-			<scope>provided</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 			<version>2.0.0</version>
-			<scope>provided</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.0.0</version>
-			<scope>provided</scope>
+			<optional>true</optional>
 		</dependency>
 
 	</dependencies>
