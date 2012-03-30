@@ -10,7 +10,7 @@
 
 	<groupId>com.carrotgarden.util</groupId>
 	<artifactId>carrot-util-7zip</artifactId>
-	<version>9.20-carrot001</version>
+	<version>9.20-carrot002-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<scm>
