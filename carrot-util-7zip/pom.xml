@@ -10,7 +10,7 @@
 
 	<groupId>com.carrotgarden.util</groupId>
 	<artifactId>carrot-util-7zip</artifactId>
-	<version>9.20-2-SNAPSHOT</version>
+	<version>9.20-carrot001-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<scm>
@@ -27,8 +27,10 @@
 	<properties>
 
 		<carrotJavaVersion>1.6</carrotJavaVersion>
-
+		
+		<!-- 7zip version -->
 		<fileName>lzma920</fileName>
+		
 		<fileNameTar>${fileName}.tar</fileNameTar>
 		<fileNameTarBz2>${fileNameTar}.bz2</fileNameTarBz2>
 		
@@ -54,7 +56,7 @@
 				<executions>
 					<execution>
 						<id>download</id>
-						<phase>process-sources</phase>
+						<phase>generate-sources</phase>
 						<goals>
 							<goal>download-single</goal>
 						</goals>
@@ -73,7 +75,7 @@
 				<executions>
 					<execution>
 						<id>unpack</id>
-						<phase>process-sources</phase>
+						<phase>generate-sources</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -92,6 +94,7 @@
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>add-source</id>
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>add-source</goal>
@@ -109,6 +112,7 @@
 
 		<pluginManagement>
 			<plugins>
+			
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -148,8 +152,10 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+				
 			</plugins>
 		</pluginManagement>
+		
 	</build>
 
 </project>

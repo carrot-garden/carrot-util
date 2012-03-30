@@ -11,7 +11,7 @@
 
 	<echo message="basedir : ${basedir}" />
 
-	<property name="tag" value="carrot-archon-" />
+	<property name="tag" value="carrot-util-7zip-9.20-1" />
 
 	<target name="git">
 		<exec executable="git">
