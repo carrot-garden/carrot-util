@@ -16,6 +16,7 @@ import com.carrotgarden.util.values.api.SizeValue;
 import com.carrotgarden.util.values.api.TextValue;
 import com.carrotgarden.util.values.api.TimeValue;
 import com.carrotgarden.util.values.lang.MathExtra;
+import com.carrotgarden.util.values.lang.MathExtra.DoubleParts;
 
 public final class ValueBuilder {
 
@@ -62,6 +63,13 @@ public final class ValueBuilder {
 				return new DefPriceB(mantissa, exponent);
 			}
 		}
+	}
+
+	public static final PriceValue newPrice(final double value) {
+		final DoubleParts parts = MathExtra.extractDecimal(value);
+		final long mantissa = parts.getMantissa();
+		final int exponent = parts.getExponent();
+		return newPrice(mantissa, exponent);
 	}
 
 	public static final PriceValue newPriceMutable(final long mantissa,
@@ -179,6 +187,13 @@ public final class ValueBuilder {
 
 	public static DecimalValue newDecimal(final long mantissa,
 			final int exponent) {
+		return new DefDecimal(mantissa, exponent);
+	}
+
+	public static DecimalValue newDecimal(final double value) {
+		final DoubleParts parts = MathExtra.extractDecimal(value);
+		final long mantissa = parts.getMantissa();
+		final int exponent = parts.getExponent();
 		return new DefDecimal(mantissa, exponent);
 	}
 

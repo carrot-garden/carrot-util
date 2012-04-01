@@ -73,4 +73,48 @@ public class TestValueBuilder {
 
 	}
 
+	@Test
+	public void TestNewPrice3() {
+
+		assertEquals(newPrice(10, 00), newPrice(10.0));
+		assertEquals(newPrice(10, -1), newPrice(1.0));
+		assertEquals(newPrice(10, -2), newPrice(0.1));
+		assertEquals(newPrice(10, -3), newPrice(0.01));
+		assertEquals(newPrice(10, -4), newPrice(0.001));
+		assertEquals(newPrice(10, -5), newPrice(0.0001));
+		assertEquals(newPrice(10, -6), newPrice(0.00001));
+		assertEquals(newPrice(10, -7), newPrice(0.000001));
+		assertEquals(newPrice(10, -8), newPrice(0.0000001));
+
+		assertEquals(newPrice(1, 00), newPrice(1.0));
+		assertEquals(newPrice(1, -1), newPrice(0.1));
+		assertEquals(newPrice(1, -2), newPrice(0.01));
+		assertEquals(newPrice(1, -3), newPrice(0.001));
+		assertEquals(newPrice(1, -4), newPrice(0.0001));
+		assertEquals(newPrice(1, -5), newPrice(0.00001));
+		assertEquals(newPrice(1, -6), newPrice(0.000001));
+		assertEquals(newPrice(1, -7), newPrice(0.0000001));
+
+		assertEquals(newPrice(123456, 00), newPrice(123456.0));
+		assertEquals(newPrice(123456, -1), newPrice(12345.60));
+		assertEquals(newPrice(123456, -2), newPrice(1234.560));
+
+		assertEquals(newPrice(243456, -4), newPrice(24.3456));
+
+		assertEquals(newPrice(1681235, -3), newPrice(1681.235));
+
+		assertEquals(newPrice(16812356, -4), newPrice(1681.2356));
+
+		assertEquals(newPrice(168123567, -5), newPrice(1681.23567));
+
+		assertEquals(newPrice(1681235678, -6), newPrice(1681.235678));
+
+		assertEquals(newPrice(16812356789L, -7), newPrice(1681.2356789));
+
+		assertEquals(newPrice(7168123567892L, -8), newPrice(71681.23567892));
+
+		assertEquals(newPrice(71681235678923L, -9), newPrice(71681.235678923));
+
+	}
+
 }
