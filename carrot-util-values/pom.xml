@@ -38,11 +38,12 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- time -->
@@ -55,17 +56,17 @@
 		<dependency>
 			<groupId>com.carrotgarden.util</groupId>
 			<artifactId>carrot-util-anno</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.carrotgarden.util</groupId>
 			<artifactId>carrot-util-ascii</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.carrotgarden.util</groupId>
 			<artifactId>carrot-util-test</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 
 		<!-- json codec -->
