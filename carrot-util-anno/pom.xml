@@ -19,14 +19,14 @@
 
 	<groupId>com.carrotgarden.util</groupId>
 	<artifactId>carrot-util-anno</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<scm>
 		<url>https://github.com/carrot-garden/carrot-util</url>
 		<connection>scm:git:git://github.com/carrot-garden/carrot-util.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/carrot-garden/carrot-util.git</developerConnection>
-	  <tag>carrot-util-anno-1.0.2</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<properties>
