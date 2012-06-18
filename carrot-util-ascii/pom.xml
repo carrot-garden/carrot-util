@@ -19,14 +19,15 @@
 
 	<groupId>com.carrotgarden.util</groupId>
 	<artifactId>carrot-util-ascii</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<packaging>bundle</packaging>
 
 	<scm>
 		<url>https://github.com/carrot-garden/carrot-util</url>
 		<connection>scm:git:git://github.com/carrot-garden/carrot-util.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/carrot-garden/carrot-util.git</developerConnection>
-	</scm>
+	  <tag>carrot-util-ascii-1.0.2</tag>
+  </scm>
 
 	<properties>
 		<carrotJavaVersion>1.6</carrotJavaVersion>
