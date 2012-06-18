@@ -14,10 +14,10 @@ package com.carrotgarden.util.values.lang;
  * 
  * "T" primary type
  * 
- * "F" multiplier type
+ * "F" multiplier (factor) type
  * 
  */
-public interface ScaledDecimal<T extends ScaledDecimal<T, F>, F extends ScaledDecimal<F, ?>>
+public interface ScaledDecimal<T extends ScaledDecimal<T, F>, F extends ScaledDecimal<?, ?>>
 		extends Comparable<T> {
 
 	//
