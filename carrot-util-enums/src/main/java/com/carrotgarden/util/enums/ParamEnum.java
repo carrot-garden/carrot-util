@@ -7,9 +7,7 @@
  */
 package com.carrotgarden.util.enums;
 
-
-public interface ParamEnum<V, T extends ParamEnum<V, T>> extends EnumJDK,
-		Sequence {
+public interface ParamEnum<V> extends EnumJDK, Sequence {
 
 	@Override
 	int sequence();
@@ -18,8 +16,8 @@ public interface ParamEnum<V, T extends ParamEnum<V, T>> extends EnumJDK,
 
 	//
 
-	boolean is(ParamEnum<?, ?> that);
+	boolean is(ParamEnum<?> that);
 
-	boolean isIn(ParamEnum<?, ?>... thatArray);
+	boolean isIn(ParamEnum<?>... thatArray);
 
 }

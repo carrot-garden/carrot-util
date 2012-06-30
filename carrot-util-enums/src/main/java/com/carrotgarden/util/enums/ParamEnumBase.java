@@ -7,12 +7,14 @@
  */
 package com.carrotgarden.util.enums;
 
-public class ParamEnumBase<V, T extends ParamEnum<V, T>> extends
-		DictEnumBase<V> implements ParamEnum<V, T> {
+public class ParamEnumBase<V> extends DictEnumBase<V> implements ParamEnum<V> {
 
 	protected ParamEnumBase() {
-		super("");
-		this.value = null;
+		this("", null);
+	}
+
+	protected ParamEnumBase(final V value) {
+		this("", value);
 	}
 
 	protected ParamEnumBase(final String comment, final V value) {
@@ -28,17 +30,17 @@ public class ParamEnumBase<V, T extends ParamEnum<V, T>> extends
 	}
 
 	@Override
-	public final boolean is(final ParamEnum<?, ?> that) {
+	public final boolean is(final ParamEnum<?> that) {
 		/** assuming same class loader */
 		return this == that;
 	}
 
 	@Override
-	public final boolean isIn(final ParamEnum<?, ?>... thatArray) {
+	public final boolean isIn(final ParamEnum<?>... thatArray) {
 		if (thatArray == null) {
 			return false;
 		}
-		for (final ParamEnum<?, ?> that : thatArray) {
+		for (final ParamEnum<?> that : thatArray) {
 			if (is(that)) {
 				return true;
 			}

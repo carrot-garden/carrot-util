@@ -5,14 +5,14 @@
  *
  * http://www.opensource.org/licenses/bsd-license.php
  */
-package bench.enum2d;
+package bench.param_enum;
 
-import com.carrotgarden.util.enums.ParamEnum;
+public interface Value<T extends Value<T>> {
 
-public interface ParamEnum2D<V> extends ParamEnum<V> {
+	T freeze();
 
-	int row();
+	boolean isFrozen();
 
-	int col();
+	boolean isNull();
 
 }

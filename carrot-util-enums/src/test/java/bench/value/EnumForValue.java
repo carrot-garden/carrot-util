@@ -9,8 +9,7 @@ package bench.value;
 
 import bench.enum1d.ParamEnum1DBase;
 
-class EnumForValue<V extends ValueIce> extends
-		ParamEnum1DBase<V, EnumForValue<V>> {
+class EnumForValue<V extends ValueIce> extends ParamEnum1DBase<V> {
 
 	// keep first
 	private static int sequence;
@@ -32,11 +31,12 @@ class EnumForValue<V extends ValueIce> extends
 
 	//
 
-	protected EnumForValue(V defVal) {
+	protected EnumForValue(final V defVal) {
 		super(values, sequence++, defVal);
 	}
 
-	protected EnumForValue(EnumForValue<?>[] values, int sequence, V defVal) {
+	protected EnumForValue(final EnumForValue<?>[] values, int sequence,
+			final V defVal) {
 		super(values, sequence++, defVal);
 	}
 

@@ -7,11 +7,10 @@
  */
 package bench.enum2d;
 
-
 import bench.enum1d.ParamEnum1DBase;
 
-public abstract class ParamEnum2DBase<V, T extends ParamEnum2D<V, T>> extends
-		ParamEnum1DBase<V, T> implements ParamEnum2D<V, T> {
+public abstract class ParamEnum2DBase<V> extends ParamEnum1DBase<V> implements
+		ParamEnum2D<V> {
 
 	//
 
@@ -29,7 +28,7 @@ public abstract class ParamEnum2DBase<V, T extends ParamEnum2D<V, T>> extends
 		return col;
 	}
 
-	protected ParamEnum2DBase(final ParamEnum1DBase<?, ?>[] values,
+	protected ParamEnum2DBase(final ParamEnum1DBase[] values,
 			final int ordinal, final V defVal, final int row, final int col) {
 		super(values, ordinal, defVal);
 		this.row = row;

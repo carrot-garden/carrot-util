@@ -13,8 +13,7 @@ import java.lang.reflect.Modifier;
 import com.carrotgarden.util.enums.EnumJDK;
 import com.carrotgarden.util.enums.ParamEnum;
 
-public class ParamEnum1DBase<V, T extends ParamEnum<V, T>> implements
-		ParamEnum<V, T> {
+public class ParamEnum1DBase<V> implements ParamEnum<V> {
 
 	protected final int ordinal;
 
@@ -39,7 +38,7 @@ public class ParamEnum1DBase<V, T extends ParamEnum<V, T>> implements
 
 	//
 
-	protected ParamEnum1DBase(final ParamEnum1DBase<?, ?>[] values,
+	protected ParamEnum1DBase(final ParamEnum1DBase[] values,
 			final int ordinal, final V defVal) {
 
 		this.ordinal = ordinal;
@@ -66,7 +65,7 @@ public class ParamEnum1DBase<V, T extends ParamEnum<V, T>> implements
 
 	}
 
-	protected static final <E extends ParamEnum1DBase<?, ?>> int countEnumFields(
+	protected static final <E extends ParamEnum1DBase<?>> int countEnumFields(
 			final Class<E> klaz) {
 
 		final Field[] fieldArray = klaz.getDeclaredFields();
@@ -110,14 +109,14 @@ public class ParamEnum1DBase<V, T extends ParamEnum<V, T>> implements
 	}
 
 	@Override
-	public final boolean is(final ParamEnum<?, ?> that) {
+	public final boolean is(final ParamEnum that) {
 		// assuming same class loader
 		return this == that;
 	}
 
 	@Override
-	public final boolean isIn(final ParamEnum<?, ?>... thatArray) {
-		for (final ParamEnum<?, ?> that : thatArray) {
+	public final boolean isIn(final ParamEnum... thatArray) {
+		for (final ParamEnum that : thatArray) {
 			if (is(that)) {
 				return true;
 			}
@@ -130,7 +129,7 @@ public class ParamEnum1DBase<V, T extends ParamEnum<V, T>> implements
 		if (other == null) {
 			throw new NullPointerException("other == null");
 		}
-		final ParamEnum1DBase<?, ?> that = (ParamEnum1DBase<?, ?>) other;
+		final ParamEnum1DBase that = (ParamEnum1DBase) other;
 		if (this.getClass() != that.getClass())
 			throw new ClassCastException(
 					"this and that must come from same class");

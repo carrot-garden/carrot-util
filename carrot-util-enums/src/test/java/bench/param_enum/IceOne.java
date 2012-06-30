@@ -5,14 +5,12 @@
  *
  * http://www.opensource.org/licenses/bsd-license.php
  */
-package bench.enum2d;
+package bench.param_enum;
 
-import com.carrotgarden.util.enums.ParamEnum;
+public interface IceOne {
 
-public interface ParamEnum2D<V> extends ParamEnum<V> {
+	<V> V get(FieldOne<V> field);
 
-	int row();
-
-	int col();
+	<V> void set(FieldOne<V> field, V value);
 
 }
