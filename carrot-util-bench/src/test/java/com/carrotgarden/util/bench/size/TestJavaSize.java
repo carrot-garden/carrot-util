@@ -5,9 +5,9 @@
  *
  * http://www.opensource.org/licenses/bsd-license.php
  */
-package com.carrotgarden.util.test.size;
+package com.carrotgarden.util.bench.size;
 
-import static com.carrotgarden.util.test.size.JavaSize.*;
+import static com.carrotgarden.util.bench.size.JavaSize.*;
 import static org.junit.Assert.*;
 
 import org.junit.After;

@@ -5,10 +5,10 @@
  *
  * http://www.opensource.org/licenses/bsd-license.php
  */
-package com.carrotgarden.util.test.size;
+package com.carrotgarden.util.bench.size;
 
-interface test_Class5 extends test_Class4 {
+class test_Class_B extends test_Class_A {
 
-	public int x = 2;
+	int value;
 
 }

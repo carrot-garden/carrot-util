@@ -5,7 +5,7 @@
  *
  * http://www.opensource.org/licenses/bsd-license.php
  */
-package com.carrotgarden.util.test.time;
+package com.carrotgarden.util.bench.time;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

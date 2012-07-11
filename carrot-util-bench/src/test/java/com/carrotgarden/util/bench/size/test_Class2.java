@@ -5,9 +5,9 @@
  *
  * http://www.opensource.org/licenses/bsd-license.php
  */
-package com.carrotgarden.util.test.size;
+package com.carrotgarden.util.bench.size;
 
-import static com.carrotgarden.util.test.size.JavaSize.*;
+import static com.carrotgarden.util.bench.size.JavaSize.*;
 
 class test_Class2 extends test_Class1 {
 

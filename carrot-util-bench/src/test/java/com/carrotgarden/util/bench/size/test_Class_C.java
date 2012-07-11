@@ -5,10 +5,10 @@
  *
  * http://www.opensource.org/licenses/bsd-license.php
  */
-package com.carrotgarden.util.test.size;
+package com.carrotgarden.util.bench.size;
 
-interface test_Class4 {
+class test_Class_C {
 
-	public byte x = 1;
+	test_Class_C self;
 
 }
