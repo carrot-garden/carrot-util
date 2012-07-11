@@ -10,7 +10,7 @@ package com.carrotgarden.util.values.api;
 import com.carrotgarden.util.anno.NotMutable;
 import com.carrotgarden.util.values.lang.ScaledDecimal;
 
-/** should be used for prices only */
+/** should be used for trade price only */
 @NotMutable
 public interface PriceValue extends Value<PriceValue>,
 		ScaledDecimal<PriceValue, DecimalValue> {

@@ -11,6 +11,7 @@ import java.util.UUID;
 
 import com.carrotgarden.util.ascii.ASCII;
 import com.carrotgarden.util.values.api.DecimalValue;
+import com.carrotgarden.util.values.api.IntegerValue;
 import com.carrotgarden.util.values.api.PriceValue;
 import com.carrotgarden.util.values.api.SizeValue;
 import com.carrotgarden.util.values.api.TextValue;
@@ -83,25 +84,25 @@ public final class ValueBuilder {
 
 	private static final int SIZE_CACHE_LIMIT = 1024;
 
-	private static final SizeValue[] SIZE_CACHE = new SizeValue[SIZE_CACHE_LIMIT];
+	private static final IntegerValue[] SIZE_CACHE = new IntegerValue[SIZE_CACHE_LIMIT];
 
 	static {
 		for (int k = 0; k < SIZE_CACHE_LIMIT; k++) {
-			SIZE_CACHE[k] = new DefSize(k);
+			SIZE_CACHE[k] = new DefInteger(k);
 		}
-		SIZE_CACHE[0] = ValueConst.ZERO_SIZE;
+		SIZE_CACHE[0] = ValueConst.ZERO_INTEGER;
 	}
 
-	public static final SizeValue newSize(final long size) {
+	public static final IntegerValue newInteger(final long size) {
 		if (0 <= size && size < SIZE_CACHE_LIMIT) {
 			return SIZE_CACHE[(int) size];
 		} else {
-			return new DefSize(size);
+			return new DefInteger(size);
 		}
 	}
 
-	public static final SizeValue newSizeMutable(final long size) {
-		return new VarSize(size);
+	public static final IntegerValue newSizeMutable(final long size) {
+		return new VarInteger(size);
 	}
 
 	public static final TimeValue newTime(final long time) {
@@ -200,6 +201,22 @@ public final class ValueBuilder {
 	public static DecimalValue newDecimalMutable(final long mantissa,
 			final int exponent) {
 		return new VarDecimal(mantissa, exponent);
+	}
+
+	public static SizeValue newSize(final long mantissa, final int exponent) {
+		final int mantSmall = (int) mantissa;
+		if (mantSmall == mantissa) {
+			return new DefSizeA(mantSmall, exponent);
+		} else {
+			return new DefSizeB(mantissa, exponent);
+		}
+	}
+
+	public static final SizeValue newSize(final double value) {
+		final DoubleParts parts = MathExtra.extractDecimal(value);
+		final long mantissa = parts.getMantissa();
+		final int exponent = parts.getExponent();
+		return newSize(mantissa, exponent);
 	}
 
 }

@@ -9,7 +9,7 @@ package com.carrotgarden.util.values.json;
 
 import com.carrotgarden.util.values.api.DecimalValue;
 import com.carrotgarden.util.values.api.PriceValue;
-import com.carrotgarden.util.values.api.SizeValue;
+import com.carrotgarden.util.values.api.IntegerValue;
 import com.carrotgarden.util.values.api.TextValue;
 import com.carrotgarden.util.values.api.TimeValue;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,7 +23,7 @@ public class Dummy {
 	PriceValue price;
 
 	@JsonProperty("size")
-	SizeValue size;
+	IntegerValue size;
 
 	@JsonProperty("text")
 	TextValue text;

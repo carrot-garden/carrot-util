@@ -7,20 +7,18 @@
  */
 package com.carrotgarden.util.values.provider;
 
-import static com.carrotgarden.util.values.provider.ValueBuilder.*;
-
 import com.carrotgarden.util.anno.Mutable;
 import com.carrotgarden.util.anno.NotThreadSafe;
-import com.carrotgarden.util.values.api.SizeValue;
+import com.carrotgarden.util.values.api.IntegerValue;
 
 //16 bytes on 32 bit JVM
 @Mutable
 @NotThreadSafe
-final class VarSize extends BaseSize {
+final class VarInteger extends BaseInteger {
 
 	private volatile long value;
 
-	VarSize(final long value) {
+	VarInteger(final long value) {
 		this.value = value;
 	}
 
@@ -30,14 +28,14 @@ final class VarSize extends BaseSize {
 	}
 
 	@Override
-	protected final SizeValue returnSize(final long value) {
+	protected final IntegerValue returnSize(final long value) {
 		this.value = value;
 		return this;
 	}
 
 	@Override
-	public final SizeValue freeze() {
-		return newSize(value);
+	public final IntegerValue freeze() {
+		return ValueBuilder.newInteger(value);
 	}
 
 	@Override

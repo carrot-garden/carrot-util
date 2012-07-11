@@ -8,25 +8,27 @@
 package com.carrotgarden.util.values.provider;
 
 import com.carrotgarden.util.anno.NotMutable;
-import com.carrotgarden.util.values.api.SizeValue;
 
-// 8 bytes on 32 bit JVM
+// 24 bytes on 32 bit JVM
 @NotMutable
-final class NulSize extends BaseSize {
+final class DefSizeB extends BaseSize {
 
-	@Override
-	public long mantissa() {
-		return 0;
+	private final long mantissa;
+	private final int exponent;
+
+	DefSizeB(final long mantissa, final int exponent) {
+		this.mantissa = mantissa;
+		this.exponent = exponent;
 	}
 
 	@Override
-	public int exponent() {
-		return 0;
+	public final long mantissa() {
+		return mantissa;
 	}
 
 	@Override
-	protected SizeValue result(final long mantissa, final int exponent) {
-		return ValueBuilder.newSize(mantissa, exponent);
+	public final int exponent() {
+		return exponent;
 	}
 
 }

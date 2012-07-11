@@ -9,7 +9,7 @@ package com.carrotgarden.util.values.json;
 
 import com.carrotgarden.util.values.api.DecimalValue;
 import com.carrotgarden.util.values.api.PriceValue;
-import com.carrotgarden.util.values.api.SizeValue;
+import com.carrotgarden.util.values.api.IntegerValue;
 import com.carrotgarden.util.values.api.TextValue;
 import com.carrotgarden.util.values.api.TimeValue;
 import com.fasterxml.jackson.core.Version;
@@ -42,7 +42,7 @@ public class ValueModule {
 
 		//
 
-		final Class<SizeValue> klazSize = SizeValue.class;
+		final Class<IntegerValue> klazSize = IntegerValue.class;
 		module.addSerializer(new SizeValueSer(klazSize));
 		module.addDeserializer(klazSize, new SizeValueDes(klazSize));
 

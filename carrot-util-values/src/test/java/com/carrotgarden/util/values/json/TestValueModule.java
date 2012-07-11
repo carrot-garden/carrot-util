@@ -31,7 +31,7 @@ public class TestValueModule {
 
 		source.decimal = ValueBuilder.newDecimal(234234, -3);
 		source.price = ValueBuilder.newPrice(123, -2);
-		source.size = ValueBuilder.newSize(1234567890123L);
+		source.size = ValueBuilder.newInteger(1234567890123L);
 		source.text = ValueBuilder.newText("hello string");
 		source.time = ValueBuilder.newTime(System.currentTimeMillis());
 		log.debug("source: {}", source);

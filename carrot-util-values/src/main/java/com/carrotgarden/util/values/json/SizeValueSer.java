@@ -12,22 +12,22 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.carrotgarden.util.values.api.SizeValue;
+import com.carrotgarden.util.values.api.IntegerValue;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-class SizeValueSer extends StdSerializer<SizeValue> {
+class SizeValueSer extends StdSerializer<IntegerValue> {
 
 	static Logger log = LoggerFactory.getLogger(SizeValueSer.class);
 
-	protected SizeValueSer(final Class<SizeValue> klaz) {
+	protected SizeValueSer(final Class<IntegerValue> klaz) {
 		super(klaz);
 	}
 
 	@Override
-	public void serialize(final SizeValue value, final JsonGenerator jgen,
+	public void serialize(final IntegerValue value, final JsonGenerator jgen,
 			final SerializerProvider provider) throws IOException,
 			JsonProcessingException {
 

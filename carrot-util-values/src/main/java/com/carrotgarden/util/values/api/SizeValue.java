@@ -8,38 +8,11 @@
 package com.carrotgarden.util.values.api;
 
 import com.carrotgarden.util.anno.NotMutable;
+import com.carrotgarden.util.values.lang.ScaledDecimal;
 
+/** should be used for trade size only */
 @NotMutable
-public interface SizeValue extends Value<SizeValue>, Comparable<SizeValue> {
-
-	//
-
-	// legacy compatibility
-	@Deprecated
-	int asInt();
-
-	long asLong();
-
-	//
-
-	@Override
-	int compareTo(SizeValue thatSize);
-
-	@Override
-	boolean equals(Object thatSize);
-
-	//
-
-	SizeValue add(SizeValue thatSize) throws ArithmeticException;
-
-	SizeValue sub(SizeValue thatSize) throws ArithmeticException;
-
-	SizeValue mult(long factor) throws ArithmeticException;
-
-	SizeValue div(long factor) throws ArithmeticException;
-
-	long count(SizeValue thatSize) throws ArithmeticException;
-
-	boolean isZero();
+public interface SizeValue extends Value<SizeValue>,
+		ScaledDecimal<SizeValue, DecimalValue> {
 
 }

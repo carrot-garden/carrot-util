@@ -7,88 +7,40 @@
  */
 package com.carrotgarden.util.values.provider;
 
+import static com.carrotgarden.util.values.provider.ValueConst.*;
+
 import com.carrotgarden.util.anno.NotMutable;
+import com.carrotgarden.util.values.api.DecimalValue;
 import com.carrotgarden.util.values.api.SizeValue;
-import com.carrotgarden.util.values.lang.MathExtra;
+import com.carrotgarden.util.values.lang.ScaledDecimalValue;
 
 @NotMutable
-abstract class BaseSize extends ValueFreezer<SizeValue> implements SizeValue {
-
-	//
-
-	protected abstract SizeValue returnSize(long value);
+abstract class BaseSize extends ScaledDecimalValue<SizeValue, DecimalValue>
+		implements SizeValue {
 
 	@Override
-	public abstract long asLong();
-
-	//
-
-	@Deprecated
-	@Override
-	public final int asInt() {
-		return MathExtra.castLongToInt(asLong());
+	protected SizeValue result(final long mantissa, final int exponent) {
+		return ValueBuilder.newSize(mantissa, exponent);
 	}
 
 	@Override
-	public final int compareTo(final SizeValue that) {
-		final long v1 = this.asLong();
-		final long v2 = that.asLong();
-		return v1 < v2 ? -1 : (v1 == v2 ? 0 : 1);
+	public final boolean isNull() {
+		return this == NULL_SIZE;
 	}
 
 	@Override
-	public final int hashCode() {
-		final long value = asLong();
-		return (int) (value ^ (value >>> 32));
-	}
-
-	@Override
-	public final boolean equals(Object thatSize) {
-		if (thatSize instanceof SizeValue) {
-			SizeValue that = (SizeValue) thatSize;
-			return this.asLong() == that.asLong();
+	public final boolean equals(final Object thatValue) {
+		if (thatValue instanceof SizeValue) {
+			final SizeValue that = (SizeValue) thatValue;
+			return this.compareTo(that) == 0;
 		}
 		return false;
 	}
 
 	@Override
-	public final String toString() {
-		return String.format("Size > %9d", asLong()); // 16
-	}
-
-	@Override
-	public final boolean isNull() {
-		return this == ValueConst.NULL_SIZE;
-	}
-
-	@Override
-	public final SizeValue add(final SizeValue that) throws ArithmeticException {
-		return returnSize(MathExtra.longAdd(this.asLong(), that.asLong()));
-	}
-
-	@Override
-	public final SizeValue sub(final SizeValue that) throws ArithmeticException {
-		return returnSize(MathExtra.longSub(this.asLong(), that.asLong()));
-	}
-
-	@Override
-	public final SizeValue mult(final long factor) throws ArithmeticException {
-		return returnSize(MathExtra.longMult(this.asLong(), factor));
-	}
-
-	@Override
-	public final SizeValue div(final long factor) throws ArithmeticException {
-		return returnSize(this.asLong() / factor);
-	}
-
-	@Override
-	public final long count(final SizeValue that) throws ArithmeticException {
-		return (this.asLong() / that.asLong());
-	}
-
-	@Override
-	public final boolean isZero() {
-		return asLong() == 0L;
+	public String toString() {
+		return String.format("Price > %9d %3d", //
+				mantissa(), exponent());
 	}
 
 }

@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.carrotgarden.util.test.size.JavaSize;
 import com.carrotgarden.util.values.api.DecimalValue;
+import com.carrotgarden.util.values.api.IntegerValue;
 import com.carrotgarden.util.values.api.PriceValue;
 import com.carrotgarden.util.values.api.SizeValue;
 import com.carrotgarden.util.values.api.TextValue;
@@ -75,12 +76,17 @@ public final class ValueConst {
 	public static final SizeValue ZERO_SIZE = //
 	new NulSize();
 
+	public static final IntegerValue NULL_INTEGER = //
+	new NulInteger();
+	public static final IntegerValue ZERO_INTEGER = //
+	new NulInteger();
+
 	public static final TimeValue NULL_TIME = //
 	new NulTime();
 	public static final TimeValue ZERO_TIME = //
 	new NulTime();
 
-	public static final SizeValue[] NULL_SIZE_ARRAY = new SizeValue[0];
+	public static final IntegerValue[] NULL_SIZE_ARRAY = new IntegerValue[0];
 
 	static {
 		// sizeReport(ValueConst.class);
