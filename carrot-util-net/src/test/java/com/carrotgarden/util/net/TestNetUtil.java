@@ -17,6 +17,10 @@ public class TestNetUtil {
 
 	static final Logger log = LoggerFactory.getLogger(TestNetUtil.class);
 
+	static {
+		System.setProperty("java.net.preferIPv4Stack", "true");
+	}
+
 	@Before
 	public void setUp() throws Exception {
 	}

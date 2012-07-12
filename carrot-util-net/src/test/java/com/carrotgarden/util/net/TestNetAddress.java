@@ -8,6 +8,10 @@ import org.junit.Test;
 
 public class TestNetAddress {
 
+	static {
+		System.setProperty("java.net.preferIPv4Stack", "true");
+	}
+
 	@Before
 	public void setUp() throws Exception {
 	}
