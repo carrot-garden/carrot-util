@@ -17,10 +17,6 @@ public class TestNetUtil {
 
 	static final Logger log = LoggerFactory.getLogger(TestNetUtil.class);
 
-	static {
-		System.setProperty("java.net.preferIPv4Stack", "true");
-	}
-
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -34,7 +30,7 @@ public class TestNetUtil {
 
 		final Config conf = ConfigFactory.parseString("{ "
 				+ "localAddress = datalan/12345, " //
-				+ "remoteAddress = feedlan/23456, " //
+				+ "remoteAddress = feedlan 23456, " //
 				+ "packetTTL = 33, " //
 				+ "pipeline = advanced, " //
 				+ "custom1 = signature, " //

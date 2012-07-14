@@ -5,8 +5,21 @@ import java.net.InetSocketAddress;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @SuppressWarnings("serial")
 public class NetAddress extends InetSocketAddress {
+
+	protected static final Logger log = LoggerFactory
+			.getLogger(NetAddress.class);
+
+	static final String PROP_IP4 = "java.net.preferIPv4Stack";
+
+	static {
+		System.setProperty(PROP_IP4, "true");
+		log.warn("NOTE: {}={}", PROP_IP4, System.getProperty(PROP_IP4));
+	}
 
 	private final String host;
 

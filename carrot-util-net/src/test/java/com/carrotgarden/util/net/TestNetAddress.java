@@ -12,10 +12,6 @@ public class TestNetAddress {
 
 	static final Logger log = LoggerFactory.getLogger(TestNetAddress.class);
 
-	static {
-		System.setProperty("java.net.preferIPv4Stack", "true");
-	}
-
 	@Before
 	public void setUp() throws Exception {
 	}
