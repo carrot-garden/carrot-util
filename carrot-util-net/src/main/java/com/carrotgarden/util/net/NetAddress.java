@@ -2,6 +2,8 @@ package com.carrotgarden.util.net;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @SuppressWarnings("serial")
 public class NetAddress extends InetSocketAddress {
@@ -26,24 +28,45 @@ public class NetAddress extends InetSocketAddress {
 		this.host = addr.getHostName();
 	}
 
+	static final Pattern pattern = Pattern.compile(NetConst.ADDRESS_REGEX);
+
 	/** from tuple : "host:port" */
 	// @JsonCreator
 	public static NetAddress formTuple(final String address) {
 
-		final String[] parts;
+		// System.out.println("address = " + address);
 
-		if (address == null || address.length() == 0) {
-			parts = new String[] { "0.0.0.0", "0" };
-		} else if (address.contains(NetConst.ADDRESS_SEPARATOR[0])) {
-			parts = address.split(NetConst.ADDRESS_SEPARATOR[0]);
-		} else if (address.contains(NetConst.ADDRESS_SEPARATOR[1])) {
-			parts = address.split(NetConst.ADDRESS_SEPARATOR[1]);
+		final String host;
+		final int port;
+
+		if (address == null) {
+			host = "0.0.0.0";
+			port = 0;
 		} else {
-			parts = new String[] { address, "0" };
+			final Matcher matcher = pattern.matcher(address);
+			if (matcher.matches()) {
+
+				// System.out.println("1 = " + matcher.group(1));
+				// System.out.println("2 = " + matcher.group(2));
+				// System.out.println("3 = " + matcher.group(3));
+
+				host = matcher.group(1);
+				port = NetUtil.safePort(matcher.group(3));
+			} else {
+				host = "0.0.0.0";
+				port = 0;
+			}
 		}
 
-		final String host = parts[0];
-		final int port = NetUtil.safePort(parts[1]);
+		// if (address == null || address.length() == 0) {
+		// parts = new String[] { "0.0.0.0", "0" };
+		// } else if (address.contains(NetConst.ADDRESS_SEPARATOR[0])) {
+		// parts = address.split(NetConst.ADDRESS_SEPARATOR[0]);
+		// } else if (address.contains(NetConst.ADDRESS_SEPARATOR[1])) {
+		// parts = address.split(NetConst.ADDRESS_SEPARATOR[1]);
+		// } else {
+		// parts = new String[] { address, "0" };
+		// }
 
 		return new NetAddress(host, port);
 
@@ -54,10 +77,14 @@ public class NetAddress extends InetSocketAddress {
 		return intoTuple();
 	}
 
-	/** into tuple : "host/port" */
+	/**
+	 * use original(non resolved) host name and ":" separator
+	 * 
+	 * "host:port"
+	 */
 	// @JsonValue
 	public String intoTuple() {
-		return getHost() + NetConst.ADDRESS_SEPARATOR[0] + getPort();
+		return getHost() + ":" + getPort();
 	}
 
 }

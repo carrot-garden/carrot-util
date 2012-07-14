@@ -31,30 +31,41 @@ public class TestNetAddress {
 				NetAddress.formTuple("0.0.0.0/0"));
 		assertEquals(NetAddress.formTuple(null),
 				NetAddress.formTuple("0.0.0.0:0"));
+		assertEquals(NetAddress.formTuple(null),
+				NetAddress.formTuple("0.0.0.0 0"));
 
 		assertEquals(NetAddress.formTuple("localhost"),
 				NetAddress.formTuple("localhost/0"));
 		assertEquals(NetAddress.formTuple("localhost"),
 				NetAddress.formTuple("localhost:0"));
+		assertEquals(NetAddress.formTuple("localhost"),
+				NetAddress.formTuple("localhost 0"));
 
 		assertEquals(NetAddress.formTuple("host/12345").getHost(), "host");
-		assertEquals(NetAddress.formTuple("host:12345").getHost(), "host");
+		assertEquals(NetAddress.formTuple("host : 12345").getHost(), "host");
+		assertEquals(NetAddress.formTuple("host     12345").getHost(), "host");
 
 		assertEquals(NetAddress.formTuple("host/12345").getPort(), 12345);
 		assertEquals(NetAddress.formTuple("host:12345").getPort(), 12345);
+		assertEquals(NetAddress.formTuple("host    12345").getPort(), 12345);
 
-		assertEquals(NetAddress.formTuple("host").getHost(), "host");
-		assertEquals(NetAddress.formTuple("host").getPort(), 0);
+		assertEquals(NetAddress.formTuple("host ").getHost(), "host");
+		assertEquals(NetAddress.formTuple("host  ").getPort(), 0);
+
+		assertEquals(NetAddress.formTuple("host/xxx").getHost(), "host");
+		assertEquals(NetAddress.formTuple("host:xxx").getHost(), "host");
+		assertEquals(NetAddress.formTuple("host : xxx123").getHost(), "host");
 
 		assertEquals(NetAddress.formTuple("host/xxx").getPort(), 0);
-		assertEquals(NetAddress.formTuple("host:xxx").getPort(), 0);
+		assertEquals(NetAddress.formTuple("host : xxx").getPort(), 0);
+		assertEquals(NetAddress.formTuple("host : xxx123").getPort(), 0);
 
 		//
 
-		assertEquals(NetAddress.formTuple("host:12345"),
-				NetAddress.formTuple("host/12345"));
+		assertEquals(NetAddress.formTuple("host : 12345"),
+				NetAddress.formTuple("host / 12345"));
 
-		assertEquals("host:12345", NetAddress.formTuple("host/12345")
+		assertEquals("host:12345", NetAddress.formTuple("host :/\t 12345")
 				.toString());
 
 	}
