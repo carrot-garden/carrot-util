@@ -31,12 +31,15 @@ public class NetAddress extends InetSocketAddress {
 	public static NetAddress formTuple(final String address) {
 
 		final String[] parts;
+
 		if (address == null || address.length() == 0) {
 			parts = new String[] { "0.0.0.0", "0" };
-		} else if (!address.contains(NetConst.ADDRESS_SEPARATOR)) {
-			parts = new String[] { address, "0" };
+		} else if (address.contains(NetConst.ADDRESS_SEPARATOR[0])) {
+			parts = address.split(NetConst.ADDRESS_SEPARATOR[0]);
+		} else if (address.contains(NetConst.ADDRESS_SEPARATOR[1])) {
+			parts = address.split(NetConst.ADDRESS_SEPARATOR[1]);
 		} else {
-			parts = address.split(NetConst.ADDRESS_SEPARATOR);
+			parts = new String[] { address, "0" };
 		}
 
 		final String host = parts[0];
@@ -54,7 +57,7 @@ public class NetAddress extends InetSocketAddress {
 	/** into tuple : "host/port" */
 	// @JsonValue
 	public String intoTuple() {
-		return getHost() + NetConst.ADDRESS_SEPARATOR + getPort();
+		return getHost() + NetConst.ADDRESS_SEPARATOR[0] + getPort();
 	}
 
 }
