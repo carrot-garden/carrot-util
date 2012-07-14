@@ -34,8 +34,6 @@ public class NetAddress extends InetSocketAddress {
 	// @JsonCreator
 	public static NetAddress formTuple(final String address) {
 
-		// System.out.println("address = " + address);
-
 		final String host;
 		final int port;
 
@@ -45,11 +43,6 @@ public class NetAddress extends InetSocketAddress {
 		} else {
 			final Matcher matcher = pattern.matcher(address);
 			if (matcher.matches()) {
-
-				// System.out.println("1 = " + matcher.group(1));
-				// System.out.println("2 = " + matcher.group(2));
-				// System.out.println("3 = " + matcher.group(3));
-
 				host = matcher.group(1);
 				port = NetUtil.safePort(matcher.group(3));
 			} else {
@@ -57,16 +50,6 @@ public class NetAddress extends InetSocketAddress {
 				port = 0;
 			}
 		}
-
-		// if (address == null || address.length() == 0) {
-		// parts = new String[] { "0.0.0.0", "0" };
-		// } else if (address.contains(NetConst.ADDRESS_SEPARATOR[0])) {
-		// parts = address.split(NetConst.ADDRESS_SEPARATOR[0]);
-		// } else if (address.contains(NetConst.ADDRESS_SEPARATOR[1])) {
-		// parts = address.split(NetConst.ADDRESS_SEPARATOR[1]);
-		// } else {
-		// parts = new String[] { address, "0" };
-		// }
 
 		return new NetAddress(host, port);
 
