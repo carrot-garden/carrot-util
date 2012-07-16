@@ -193,7 +193,7 @@ public final class OpenFastUtil {
 	public static Character getChar(final GroupValue groupValue,
 			final FixTag tag) {
 
-		final FieldValue fieldValue = getFieldValueById(groupValue, tag);
+		final FieldValue fieldValue = getFieldValue(groupValue, tag);
 
 		if (fieldValue == null) {
 			return null;
@@ -211,8 +211,7 @@ public final class OpenFastUtil {
 
 	public static FixCodeCFI getCodeCFI(final GroupValue groupValue) {
 
-		final FieldValue fieldValue = getFieldValueById(groupValue,
-				FixTag.CFICode);
+		final FieldValue fieldValue = getFieldValue(groupValue, FixTag.CFICode);
 
 		if (fieldValue == null) {
 			return null;
@@ -225,7 +224,7 @@ public final class OpenFastUtil {
 	public static DoubleParts getDoubleParts(final GroupValue groupValue,
 			final FixTag tag) {
 
-		final Object scalar = getFieldValueById(groupValue, tag);
+		final Object scalar = getFieldValue(groupValue, tag);
 
 		if (scalar instanceof DecimalValue) {
 			final DecimalValue decimalValue = (DecimalValue) scalar;
@@ -268,8 +267,25 @@ public final class OpenFastUtil {
 
 	}
 
-	public static FieldValue getFieldValueById(final GroupValue groupValue,
+	public static boolean hasFieldValue(final GroupValue groupValue,
 			final FixTag tag) {
+
+		if (groupValue == null || tag == null) {
+			return false;
+		}
+
+		final Field field = groupValue.getGroup().getFieldById(tag.codeString);
+
+		return field == null ? false : true;
+
+	}
+
+	public static FieldValue getFieldValue(final GroupValue groupValue,
+			final FixTag tag) {
+
+		if (groupValue == null || tag == null) {
+			return null;
+		}
 
 		final Field field = groupValue.getGroup().getFieldById(tag.codeString);
 
@@ -280,7 +296,7 @@ public final class OpenFastUtil {
 	public static Integer getInteger(final GroupValue groupValue,
 			final FixTag tag) {
 
-		final Object scalar = getFieldValueById(groupValue, tag);
+		final Object scalar = getFieldValue(groupValue, tag);
 
 		if (scalar instanceof IntegerValue) {
 			final IntegerValue integerValue = (IntegerValue) scalar;
@@ -295,7 +311,7 @@ public final class OpenFastUtil {
 
 	public static Long getLong(final GroupValue groupValue, final FixTag tag) {
 
-		final Object scalar = getFieldValueById(groupValue, tag);
+		final Object scalar = getFieldValue(groupValue, tag);
 
 		if (scalar instanceof LongValue) {
 			final LongValue longValue = (LongValue) scalar;
@@ -356,7 +372,7 @@ public final class OpenFastUtil {
 
 	public static Long getSequence(final GroupValue groupValue, final FixTag tag) {
 
-		final Object scalar = getFieldValueById(groupValue, tag);
+		final Object scalar = getFieldValue(groupValue, tag);
 
 		if (scalar instanceof IntegerValue) {
 			final IntegerValue integerValue = (IntegerValue) scalar;
@@ -386,7 +402,7 @@ public final class OpenFastUtil {
 	public static DateTime getSpecialDateOnlyUTC(final GroupValue groupValue,
 			final FixTag tag) {
 
-		final FieldValue fieldValue = getFieldValueById(groupValue, tag);
+		final FieldValue fieldValue = getFieldValue(groupValue, tag);
 
 		if (fieldValue instanceof IntegerValue) {
 			final IntegerValue integerValue = (IntegerValue) fieldValue;
@@ -408,7 +424,7 @@ public final class OpenFastUtil {
 	public static LocalTime getSpecialTimeOnlyUTC(final GroupValue groupValue,
 			final FixTag tag) {
 
-		final FieldValue fieldValue = getFieldValueById(groupValue, tag);
+		final FieldValue fieldValue = getFieldValue(groupValue, tag);
 
 		if (fieldValue instanceof LongValue) {
 			final LongValue longValue = (LongValue) fieldValue;
@@ -429,7 +445,7 @@ public final class OpenFastUtil {
 	public static DateTime getSpecialTimeStampUTC(final GroupValue groupValue,
 			final FixTag tag) {
 
-		final FieldValue fieldValue = getFieldValueById(groupValue, tag);
+		final FieldValue fieldValue = getFieldValue(groupValue, tag);
 
 		if (fieldValue instanceof LongValue) {
 			final LongValue longValue = (LongValue) fieldValue;
@@ -442,7 +458,7 @@ public final class OpenFastUtil {
 
 	public static String getString(final GroupValue groupValue, final FixTag tag) {
 
-		final FieldValue fieldValue = getFieldValueById(groupValue, tag);
+		final FieldValue fieldValue = getFieldValue(groupValue, tag);
 
 		return fieldValue == null ? null : fieldValue.toString().trim();
 
@@ -469,7 +485,7 @@ public final class OpenFastUtil {
 	public static DateTime getYearMonth(final GroupValue groupValue,
 			final FixTag tag) {
 
-		final FieldValue fieldValue = getFieldValueById(groupValue, tag);
+		final FieldValue fieldValue = getFieldValue(groupValue, tag);
 
 		return fieldValue == null ? null : parseSpecialYearMonth(fieldValue
 				.toString());
