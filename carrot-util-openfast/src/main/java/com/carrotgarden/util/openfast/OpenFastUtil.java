@@ -270,13 +270,7 @@ public final class OpenFastUtil {
 	public static boolean hasFieldValue(final GroupValue groupValue,
 			final FixTag tag) {
 
-		if (groupValue == null || tag == null) {
-			return false;
-		}
-
-		final Field field = groupValue.getGroup().getFieldById(tag.codeString);
-
-		return field == null ? false : true;
+		return getFieldValue(groupValue, tag) == null ? false : true;
 
 	}
 
