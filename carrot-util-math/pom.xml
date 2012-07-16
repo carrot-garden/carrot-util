@@ -19,14 +19,14 @@
 
 	<groupId>com.carrotgarden.util</groupId>
 	<artifactId>carrot-util-math</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 
 	<scm>
 		<url>https://github.com/carrot-garden/carrot-util</url>
 		<connection>scm:git:git://github.com/carrot-garden/carrot-util.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/carrot-garden/carrot-util.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>carrot-util-math-1.0.0</tag>
   </scm>
 
 	<properties>
