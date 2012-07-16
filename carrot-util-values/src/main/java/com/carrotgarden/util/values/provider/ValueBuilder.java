@@ -10,14 +10,14 @@ package com.carrotgarden.util.values.provider;
 import java.util.UUID;
 
 import com.carrotgarden.util.ascii.ASCII;
+import com.carrotgarden.util.math.MathExtra;
+import com.carrotgarden.util.math.MathExtra.DoubleParts;
 import com.carrotgarden.util.values.api.DecimalValue;
 import com.carrotgarden.util.values.api.IntegerValue;
 import com.carrotgarden.util.values.api.PriceValue;
 import com.carrotgarden.util.values.api.SizeValue;
 import com.carrotgarden.util.values.api.TextValue;
 import com.carrotgarden.util.values.api.TimeValue;
-import com.carrotgarden.util.values.lang.MathExtra;
-import com.carrotgarden.util.values.lang.MathExtra.DoubleParts;
 
 public final class ValueBuilder {
 

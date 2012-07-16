@@ -69,6 +69,11 @@
 			<artifactId>carrot-util-test</artifactId>
 			<version>1.0.2</version>
 		</dependency>
+		<dependency>
+			<groupId>com.carrotgarden.util</groupId>
+			<artifactId>carrot-util-math</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<!-- json codec -->
 		<dependency>

@@ -8,11 +8,12 @@
 package com.carrotgarden.util.values.provider;
 
 import com.carrotgarden.util.anno.NotMutable;
+import com.carrotgarden.util.math.MathExtra;
 import com.carrotgarden.util.values.api.IntegerValue;
-import com.carrotgarden.util.values.lang.MathExtra;
 
 @NotMutable
-abstract class BaseInteger extends ValueFreezer<IntegerValue> implements IntegerValue {
+abstract class BaseInteger extends ValueFreezer<IntegerValue> implements
+		IntegerValue {
 
 	//
 
@@ -43,9 +44,9 @@ abstract class BaseInteger extends ValueFreezer<IntegerValue> implements Integer
 	}
 
 	@Override
-	public final boolean equals(Object thatSize) {
+	public final boolean equals(final Object thatSize) {
 		if (thatSize instanceof IntegerValue) {
-			IntegerValue that = (IntegerValue) thatSize;
+			final IntegerValue that = (IntegerValue) thatSize;
 			return this.asLong() == that.asLong();
 		}
 		return false;
@@ -62,17 +63,20 @@ abstract class BaseInteger extends ValueFreezer<IntegerValue> implements Integer
 	}
 
 	@Override
-	public final IntegerValue add(final IntegerValue that) throws ArithmeticException {
+	public final IntegerValue add(final IntegerValue that)
+			throws ArithmeticException {
 		return returnSize(MathExtra.longAdd(this.asLong(), that.asLong()));
 	}
 
 	@Override
-	public final IntegerValue sub(final IntegerValue that) throws ArithmeticException {
+	public final IntegerValue sub(final IntegerValue that)
+			throws ArithmeticException {
 		return returnSize(MathExtra.longSub(this.asLong(), that.asLong()));
 	}
 
 	@Override
-	public final IntegerValue mult(final long factor) throws ArithmeticException {
+	public final IntegerValue mult(final long factor)
+			throws ArithmeticException {
 		return returnSize(MathExtra.longMult(this.asLong(), factor));
 	}
 

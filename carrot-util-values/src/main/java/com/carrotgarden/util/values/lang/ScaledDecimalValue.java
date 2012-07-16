@@ -10,6 +10,7 @@ package com.carrotgarden.util.values.lang;
 import static java.lang.Math.*;
 
 import com.carrotgarden.util.anno.NotMutable;
+import com.carrotgarden.util.math.MathExtra;
 import com.carrotgarden.util.values.api.Value;
 import com.carrotgarden.util.values.provider.ValueFreezer;
 
