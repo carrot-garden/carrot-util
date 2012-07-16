@@ -302,7 +302,12 @@ public final class OpenFastUtil {
 			return new Long(longValue.value);
 		}
 
-		log.debug("!(scalar instanceof LongValue): {}", scalar);
+		if (scalar instanceof IntegerValue) {
+			final IntegerValue integerValue = (IntegerValue) scalar;
+			return new Long(integerValue.value);
+		}
+
+		log.debug("!(scalar instanceof LongValue/IntegerValue): {}", scalar);
 
 		return null;
 
