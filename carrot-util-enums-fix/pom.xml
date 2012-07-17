@@ -1,13 +1,7 @@
-<!--
-
-    Copyright (C) 2010-2012 Andrei Pozolotin <Andrei.Pozolotin@gmail.com>
-
-    All rights reserved. Licensed under the OSI BSD License.
-
-    http://www.opensource.org/licenses/bsd-license.php
-
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!-- Copyright (C) 2010-2012 Andrei Pozolotin <Andrei.Pozolotin@gmail.com> 
+	All rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -26,8 +20,8 @@
 		<url>https://github.com/carrot-garden/carrot-util</url>
 		<connection>scm:git:git://github.com/carrot-garden/carrot-util.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/carrot-garden/carrot-util.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<properties>
 		<carrotJavaVersion>1.6</carrotJavaVersion>
@@ -48,5 +42,101 @@
 		</dependency>
 
 	</dependencies>
+
+	<build>
+		<plugins>
+		
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<transformationSets>
+						<transformationSet>
+							<parameters>
+								<parameter>
+									<name>java_package</name>
+									<value>com.carrotgarden.enums.fix</value>
+								</parameter>
+								<parameter>
+									<name>java_classname</name>
+									<value>Fix</value>
+								</parameter>
+							</parameters>
+							<dir>src/main/resources/xdoc</dir>
+							<stylesheet>src/main/resources/xform/Builder.xsl</stylesheet>
+							<outputDir>target/main/xresult/com/carrotgarden/enums/fix</outputDir>
+							<fileMappers>
+								<fileMapper
+									implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+									<targetExtension>.java</targetExtension>
+								</fileMapper>
+							</fileMappers>
+						</transformationSet>
+					</transformationSets>
+				</configuration>
+				<executions>
+					<execution>
+						<id>gen-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>target/main/xresult</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+		
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>xml-maven-plugin</artifactId>
+										<versionRange>[0,)
+										</versionRange>
+										<goals>
+											<goal>transform</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		
+	</build>
 
 </project>
