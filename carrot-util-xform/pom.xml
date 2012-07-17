@@ -1,0 +1,171 @@
+<!-- Copyright (C) 2010-2012 Andrei Pozolotin <Andrei.Pozolotin@gmail.com> 
+	All rights reserved. Licensed under the OSI BSD License. http://www.opensource.org/licenses/bsd-license.php -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.carrotgarden.base</groupId>
+		<artifactId>carrot-archon</artifactId>
+		<version>1.2.1</version>
+	</parent>
+
+	<groupId>com.carrotgarden.util</groupId>
+	<artifactId>carrot-util-xform</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+
+	<scm>
+		<url>https://github.com/carrot-garden/carrot-util</url>
+		<connection>scm:git:git://github.com/carrot-garden/carrot-util.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/carrot-garden/carrot-util.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<properties>
+		<carrotJavaVersion>1.6</carrotJavaVersion>
+	</properties>
+
+	<dependencies>
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<profiles>
+
+		<profile>
+
+			<id>verify-xform</id>
+
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+						<version>1.2.1</version>
+						<executions>
+							<execution>
+								<id>xform</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>java</goal>
+								</goals>
+								<configuration>
+									<includePluginDependencies>false</includePluginDependencies>
+									<includeProjectDependencies>true</includeProjectDependencies>
+									<mainClass>com.carrotgarden.util.xform.Main</mainClass>
+									<arguments>
+										<arg></arg>
+									</arguments>
+									<systemProperties>
+										<systemProperty>
+											<key>carrot.file.xdoc</key>
+											<value>src/test/resources/xdoc/FIX44.xml</value>
+										</systemProperty>
+										<systemProperty>
+											<key>carrot.file.xform</key>
+											<value>src/test/resources/xform/Builder.xsl</value>
+										</systemProperty>
+										<systemProperty>
+											<key>carrot.file.xprops</key>
+											<value>src/test/resources/xprops/transform.properties</value>
+										</systemProperty>
+										<systemProperty>
+											<key>carrot.file.xresult</key>
+											<value>target/generated/result.txt</value>
+										</systemProperty>
+									</systemProperties>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+
+		<profile>
+
+			<id>verify-xml-plugin</id>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>xml-maven-plugin</artifactId>
+						<version>1.0</version>
+						<configuration>
+							<transformationSets>
+								<transformationSet>
+									<parameters>
+										<parameter>
+											<name>java_package</name>
+											<value>com.carrotgarden.enums.fix</value>
+										</parameter>
+										<parameter>
+											<name>java_classname</name>
+											<value>Fix</value>
+										</parameter>
+									</parameters>
+									<dir>src/test/resources/xdoc</dir>
+									<stylesheet>src/test/resources/xform/Builder.xsl</stylesheet>
+									<outputDir>target/xresult/com/carrotgarden/enums/fix</outputDir>
+									<fileMappers>
+										<fileMapper
+											implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+											<targetExtension>.java</targetExtension>
+										</fileMapper>
+									</fileMappers>
+								</transformationSet>
+							</transformationSets>
+						</configuration>
+						<executions>
+							<execution>
+								<id>xform</id>
+								<phase>generate-test-sources</phase>
+								<goals>
+									<goal>transform</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<id>add-test-source</id>
+								<phase>generate-test-sources</phase>
+								<goals>
+									<goal>add-test-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>target/xresult</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+
+		</profile>
+
+	</profiles>
+
+</project>

@@ -21,19 +21,39 @@ public enum FixTag {
 	// NOTE: zero is invalid FIX tag value
 	UNKNOWN(0), //
 
+	Account(1), //
+
 	BeginString(8), //
 
 	BodyLength(9), //
 
 	CheckSum(10), //
 
+	ClOrdID(11), //
+
 	Currency(15), //
+
+	HandlInst(21), //
+
+	SecurityIDSource(22), //
 
 	MsgSeqNum(34), //
 
 	MsgType(35), //
 
 	NewSeqNo(36), //
+
+	SecurityID(48), //
+
+	SendingTime(52), //
+
+	Side(54), //
+
+	Symbol(55), //
+
+	TransactTime(60), //
+
+	SettlDate(64), //
 
 	HeartBtInt(108), //
 
@@ -48,15 +68,9 @@ public enum FixTag {
 
 	//
 
-	Symbol(55), //
-
 	SecurityExchange(207), //
 
 	SecurityGroup(1151), //
-
-	SecurityIDSource(22), //
-
-	SecurityID(48), //
 
 	SecurityType(167), //
 
@@ -72,11 +86,7 @@ public enum FixTag {
 
 	//
 
-	SettlDate(64), //
-
 	SenderCompID(49), //
-
-	SendingTime(52), //
 
 	TradeDate(75), //
 
